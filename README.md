@@ -109,7 +109,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git https://github.com/rivasbolinga/my-things.git
+  git https://github.com/mahdinoori2000/ruby-group-capstone
 ```
 
 -
@@ -162,7 +162,7 @@ Example:
 ## 👥 Authors <a name="authors"></a>
 
 > Mention all of the collaborators of this project.
-👤 **Author1**
+> 👤 **Author1**
 
 - GitHub: [@Mahdi Noori ](https://github.com/mahdinoori2000)
 - LinkedIn: [Mahdi Noori ]()
