@@ -1,23 +1,29 @@
 require_relative 'rental_class'
 
 class Item
-  attr_accessor :title, :author, :rentals
+  attr_accessor :id, :genre, :author, :source, :label, :publish_date, :archived
 
-  def initialize(title, author)
-    @title = title
+  def initialize(genre, author, source, label, publish_date, archived: false)
+    @id = id || generate_id
+    @genre = genre
+    @source = source
+    @label = label
     @author = author
-    @rentals = []
+    @publish_date = publish_date
+    @archived = archived
+    @book = book
+    @archived = archived
   end
 
-  def add_rental(rental)
-    @rentals.push(rental)
-    @rentals << rental
+  def can_be_archived?
+    !@archived
   end
 
-  def to_hash
-    {
-      title: @title,
-      author: @author
-    }
+  def move_to_archive
+    @archived = true
+  end
+
+  def generate_id
+    rand(1..1000)
   end
 end
