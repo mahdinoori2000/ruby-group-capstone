@@ -84,6 +84,14 @@ class App
 
   def create_movie
     puts 'You have selected 11 - Create a movie'
+
+    print 'Enter movie title:'
+    title = gets.chomp
+
+    print 'Is it silent? (true/false):'
+    silet = gets.chomp.downcase == 'true'
+
+    movie = Movie.new(1, title, silet: silet)
   end
 
   def create_game
