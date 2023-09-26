@@ -1,15 +1,17 @@
-class Book
+require_relative '../item.rb'
+
+# this is a class that inherits from Item class
+class Book < Item
   attr_accessor  :publisher, :cover_state
+
   def initialize(publisher, cover_state)
-    super
     @publisher = publisher
     @cover_state = cover_state
   end
   def can_be_archived?
-    if super
-      @cover_state == "bad"
-    else
-      false
-    end
+    super || cover_state == "bad"
   end
 end
+
+newBook = Book.new("publisher", "bad")
+puts newBook.can_be_archived?
