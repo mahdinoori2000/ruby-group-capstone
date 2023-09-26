@@ -15,3 +15,4 @@ end
 
 newBook = Book.new("publisher", "bad")
 puts newBook.can_be_archived?
+print newBook.inspect
