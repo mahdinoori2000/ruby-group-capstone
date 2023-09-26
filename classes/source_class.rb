@@ -14,6 +14,6 @@ class Source
   end
 
   def to_s
-    "Source: #{name} (ID: #{@id})"
+    "Source: #{@name} (ID: #{@id})"
   end
 end

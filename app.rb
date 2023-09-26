@@ -100,6 +100,9 @@ class App
     print 'Enter author last name: '
     author_last_name = gets.chomp
 
+    print 'Enter source ID: '
+    source_id = gets.chomp.to_i
+
     print 'Enter source name: '
     source_name = gets.chomp
 
@@ -114,10 +117,12 @@ class App
 
     # author and source object
     author = Author.new(author_first_name, author_last_name)
-    source = Source.new(source_name)
+    source = Source.new(source_id, source_name)
 
     author.add_item(movie)
+    movie.add_author(author)
     source.add_item(movie)
+    movie.add_source(source)
 
     puts "Movie '#{title}' created successfully!"
   end

@@ -13,8 +13,16 @@ class Movie < Item
     @label = label
   end
 
+  def add_author(author)
+    @author = author
+  end
+
+  def add_source(source)
+    @source = source
+  end
+
   def can_be_archived?
-    super && !@silet
+    super || @silet
   end
 
   def move_to_archive
