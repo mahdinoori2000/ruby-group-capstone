@@ -1,19 +1,29 @@
 require_relative '../item'
 
 class Movie < Item
-  attr_accessor :silet
+  attr_accessor :silet, :genre, :author, :source, :label
 
-  def initialize(id, title, archived: false, silet: false)
-    super(id, archived: archived)
+  def initialize(id, title, silet: false, genre: nil, author: nil, source: nil, label: nil, publish_date: Date.today, archived: false)
+    super(id, publish_date: publish_date, archived: archived)
     @title = title
     @silet = silet
+    @genre = genre
+    @author = author
+    @source = source
+    @label = label
   end
 
   def can_be_archived?
     super && !@silet
   end
 
+  def move_to_archive
+    return unless can_be_archived?
+
+    @archived = true
+  end
+
   def to_s
-    "Movie: #{@title} (Silent: #{@silet}, Archived: #{@archived})"
+    "Movie: #{@title} (Silent: #{@silet}, Genre: #{@genre}, Author: #{@author}, Source: #{@source}, Label: #{@label}, Archived: #{@archived})"
   end
 end
