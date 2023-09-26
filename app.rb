@@ -35,9 +35,8 @@ class App
       13 => method(:exit_app)
     }
 
-    action = actions[option]
-    if action
-      action.call
+    if actions[option]
+      actions[option].call
     else
       puts '❌ Sorry! You have to select one of the options'
     end
@@ -50,7 +49,7 @@ class App
   def list_all_music_albums
     puts 'You have selected 2 - List all music albums'
   end
- 
+
   def list_all_movies
     puts 'You have selected 3 - List all movies'
   end
@@ -82,7 +81,7 @@ class App
   def create_music_album
     puts 'You have selected 10 - Create a music album'
   end
- 
+
   def create_movie
     puts 'You have selected 11 - Create a movie'
   end
