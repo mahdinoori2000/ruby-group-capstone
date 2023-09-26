@@ -1,4 +1,4 @@
-require_relative '../item.rb'
+require_relative '../item'
 
 class Label
   attr_accessor :id, :title, :color
@@ -19,8 +19,3 @@ class Label
     rand(1..1000)
   end
 end
-
-newLabel = Label.new("title", "color")
-newItem = newLabel.add_item(Item.new)
-puts newItem.inspect
-puts newLabel.inspect
