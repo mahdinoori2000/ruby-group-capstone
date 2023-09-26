@@ -85,13 +85,41 @@ class App
   def create_movie
     puts 'You have selected 11 - Create a movie'
 
-    print 'Enter movie title:'
+    print 'Enter movie title: '
     title = gets.chomp
 
-    print 'Is it silent? (true/false):'
+    print 'Is it silent? (true/false): '
     silet = gets.chomp.downcase == 'true'
 
-    movie = Movie.new(1, title, silet: silet)
+    print 'Enter movie genre:'
+    genre = gets.chomp
+
+    print 'Enter author first name: '
+    author_first_name = gets.chomp
+
+    print 'Enter author last name: '
+    author_last_name = gets.chomp
+
+    print 'Enter source name: '
+    source_name = gets.chomp
+
+    print 'Enter label: '
+    label = gets.chomp
+
+    print 'Enter publish date (YYYY-MM-DD): '
+    publish_date = Date.parse(gets.chomp)
+
+    # movie object
+    movie = Movie.new(1, title, silet: silet, genre: genre, label: label, publish_date: publish_date)
+
+    # author and source object
+    author = Author.new(author_first_name, author_last_name)
+    source = Source.new(source_name)
+
+    author.add_item(movie)
+    source.add_item(movie)
+
+    puts "Movie '#{title}' created successfully!"
   end
 
   def create_game
