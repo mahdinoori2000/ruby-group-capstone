@@ -1,10 +1,13 @@
 require_relative 'app-management/ui_class'
 require_relative 'classes/music_album'
+require_relative 'classes/genre'
+
 
 class App
   def initialize
     @ui = UI.new
     @music_albums = []
+    @genres = []
   end
 
   def run
@@ -56,7 +59,7 @@ class App
       name = "#{index + 1}) Album Name: #{music_album.name}"
       publish_date = " | publish date: #{music_album.publish_date}"
       on_spotify = " | On Spotify: #{music_album.on_spotify ? 'Yes' : 'No'}"
-      genre = " | Genre: #{music_album.genre}"
+      genre = " | Genre: #{@genres[index]}"
       album_info = name + publish_date + on_spotify + genre
       puts album_info
     end
@@ -71,9 +74,7 @@ class App
   end
 
   def list_all_genres
-    genres = @music_albums.map(&:genre)
-    puts genres
-    genres.uniq.each_with_index do |genre, index|
+    @genres.uniq.each_with_index do |genre, index|
       puts "#{index + 1}. #{genre}"
     end
   end
@@ -102,7 +103,9 @@ class App
     publish_date = get_user_input('Enter date of release (YYYY-MM-DD): ')
     on_spotify = get_user_input('Is it on Spotify? (Y/N): ').downcase == 'y'
     genre = get_user_input('Enter the genre of the music album: ').downcase
-    album = MusicAlbum.new(name, publish_date, on_spotify: on_spotify, genre: genre)
+    album = MusicAlbum.new(name, publish_date, on_spotify: on_spotify)
+    new_genre = Genre.new(genre)
+    @genres.push(new_genre.name)
     @music_albums.push(album)
     puts "Album '#{album.name}' has been added."
   end
