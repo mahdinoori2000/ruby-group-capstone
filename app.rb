@@ -1,8 +1,11 @@
 require_relative 'app-management/ui_class'
+require_relative 'app-management/save_data'
+require_relative 'classes/book_class'
 
 class App
   def initialize
     @ui = UI.new
+    @books = read_file('./data/books.json')
   end
 
   def run
@@ -76,10 +79,22 @@ class App
 
   def create_book
     puts 'You have selected 9 - Create a book'
+    create_book_method
   end
 
   def create_music_album
     puts 'You have selected 10 - Create a music album'
+  end
+
+  def create_book_method
+    publish_date = get_user_input('Enter publish date (YYYY-MM-DD): ')
+    publisher = get_user_input('Enter author publisher name: ')
+    cover_state = get_user_input('Enter cover state(Good OR Bad): ')
+    # Create book object
+    @books << Book.new(publisher, publish_date, cover_state)
+    print @books
+      save_file(@books, './data/books.json')
+    puts "Book '#{publisher}' created successfully!"
   end
 
   def create_movie
