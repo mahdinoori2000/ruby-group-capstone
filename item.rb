@@ -3,9 +3,9 @@ require 'date'
 class Item
   attr_reader :id, :genre, :author, :source, :label, :publish_date
 
-  def initialize(publish_date: Date.today, archived: false)
+  def initialize(publish_date, archived: false)
     @id = id || Random.rand(1...100)
-    @publish_date = publish_date
+    @publish_date = Date.parse(publish_date).strftime('%Y %m %d')
     @archived = archived
   end
 
@@ -22,6 +22,11 @@ class Item
   end
 
   def add_label=(label)
+    @label = label
+    label.items << self unless label.items.include?(self)
+  end
+
+  def add_label(label)
     @label = label
   end
 
