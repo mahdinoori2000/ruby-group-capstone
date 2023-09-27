@@ -1,8 +1,11 @@
+
 require_relative 'app-management/ui_class'
+require_relative 'classes/music_album.rb'
 
 class App
   def initialize
     @ui = UI.new
+    @music_albums = []
   end
 
   def run
@@ -47,7 +50,17 @@ class App
   end
 
   def list_all_music_albums
-    puts 'You have selected 2 - List all music albums'
+    puts '#################'
+    puts '# Music albums: #'
+    puts '#################'
+    @music_albums.each_with_index do |music_album, index|
+      name = "#{index + 1}) Album Name: #{music_album.name}"
+      publish_date = " | publish date: #{music_album.publish_date}"
+      on_spotify = " | On Spotify: #{music_album.on_spotify ? 'Yes' : 'No'}"
+      genre = " | Genre: #{music_album.genre}"
+      album_info = name + publish_date + on_spotify + genre
+      puts album_info
+    end
   end
 
   def list_all_movies
@@ -59,7 +72,11 @@ class App
   end
 
   def list_all_genres
-    puts 'You have selected 5 - List all genres'
+    genres = @music_albums.map(&:genre)
+    puts genres
+    genres.uniq.each_with_index do |genre, index|
+      puts "#{index + 1}. #{genre}"
+    end
   end
 
   def list_all_labels
@@ -79,7 +96,16 @@ class App
   end
 
   def create_music_album
-    puts 'You have selected 10 - Create a music album'
+    puts '##############################'
+    puts '# Enter music album details: #'
+    puts '##############################'
+    name = get_user_input('Enter album title: ')
+    publish_date = get_user_input('Enter date of release (YYYY-MM-DD): ')
+    on_spotify = get_user_input('Is it on Spotify? (Y/N): ').downcase == 'y'
+    genre = get_user_input('Enter the genre of the music album: ').downcase
+    album = MusicAlbum.new(name, publish_date, on_spotify: on_spotify, genre: genre)
+    @music_albums.push(album)
+    puts "Album '#{album.name}' has been added."
   end
 
   def create_movie
