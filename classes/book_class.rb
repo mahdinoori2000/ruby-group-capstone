@@ -16,4 +16,6 @@ class Book < Item
 end
 
 new_book = Book.new('publisher', 'bad')
+new_book.genre = 'genre'
+new_book.author = 'author'
 puts new_book.inspect
