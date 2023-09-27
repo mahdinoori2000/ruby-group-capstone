@@ -1,6 +1,5 @@
-
 require_relative 'app-management/ui_class'
-require_relative 'classes/music_album.rb'
+require_relative 'classes/music_album'
 
 class App
   def initialize
