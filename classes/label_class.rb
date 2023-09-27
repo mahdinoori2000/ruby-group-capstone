@@ -11,7 +11,7 @@ class Label
   end
 
   def add_item(item)
-    @items.push(item)
+    @items << item
     item.add_label(self)
   end
 
@@ -19,3 +19,8 @@ class Label
     rand(1..1000)
   end
 end
+new_item = Item.new('2020-03-02')
+new_item.inspect
+new_label = Label.new('title', 'color')
+new_label.add_item(new_item)
+puts new_label.inspect
