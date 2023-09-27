@@ -12,10 +12,14 @@ class Label
 
   def add_item(item)
     @items.push(item)
-    item.add_label(self)
+    item.label = self unless item.label == self
   end
 
   def generate_id
     rand(1..1000)
   end
 end
+
+new_label = Label.new('title', 'color')
+
+puts new_label.inspect
