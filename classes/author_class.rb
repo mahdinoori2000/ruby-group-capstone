@@ -1,3 +1,5 @@
+require_relative '../item'
+
 class Author
   attr_reader :id
   attr_accessor :first_name, :last_name, :items
@@ -14,3 +16,4 @@ class Author
     item.add_author(self) unless item.author == (self)
   end
 end
+
