@@ -1,20 +1,32 @@
 require_relative '../classes/source_class'
 
 describe Source do
-  let(:source) { Source.new(1, 'Sample Source') }
-
-  describe '#initialize' do
-    it 'initializes with an ID and name' do
-      expect(source.id).to eq(1)
-      expect(source.name).to eq('Sample Source')
-    end
+  before(:each) do
+    @source = Source.new(1, 'Source Name')
+    @item = double('Item')
   end
 
-  describe '#add_item' do
-    it 'adds an item to the collection of items' do
-      item = double('Item')
-      source.add_item(item)
-      expect(source.items).to include(item)
-    end
+  it 'has an id' do
+    expect(@source.id).to eq(1)
+  end
+
+  it 'has a name' do
+    expect(@source.name).to eq('Source Name')
+  end
+
+  it 'can add an item' do
+    allow(@item).to receive(:source).and_return(@source)
+
+    @source.add_item(@item)
+
+    expect(@source.items).to include(@item)
+  end
+
+  it 'returns a hash representation' do
+    expected_hash = {
+      id: 1,
+      name: 'Source Name'
+    }
+    expect(@source.to_h).to eq(expected_hash)
   end
 end
