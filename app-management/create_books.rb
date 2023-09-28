@@ -19,9 +19,9 @@ def create_book_method(books, authors, labels)
   @authors << Author.new(author_first_name, author_last_name)
   @labels << Label.new(label_title, label_color)
   print @books
-  save_file(@books, './data/books.json')
-  save_file(@authors, './data/authors.json')
-  save_file(@labels, './data/labels.json')
+  save_file(@books, './data-files/books.json')
+  save_file(@authors, './data-files/authors.json')
+  save_file(@labels, './data-files/labels.json')
   puts "Book '#{publisher}' created successfully!"
 end
 
