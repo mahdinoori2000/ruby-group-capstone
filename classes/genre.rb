@@ -11,10 +11,11 @@ class Genre
     @items.push(item)
     item.genre(self)
   end
+
   def to_h
     {
       id: @id,
       name: @name
-    } 
+    }
   end
 end

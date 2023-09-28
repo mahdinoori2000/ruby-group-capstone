@@ -13,7 +13,7 @@ class MusicAlbum < Item
   def can_be_archived?
     super && @on_spotify
   end
-  
+
   def to_h
     {
       name: @name,
@@ -21,5 +21,4 @@ class MusicAlbum < Item
       on_spotify: @on_spotify
     }
   end
-
 end

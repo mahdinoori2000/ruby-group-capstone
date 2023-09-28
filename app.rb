@@ -58,9 +58,9 @@ class App
     puts '# Music albums: #'
     puts '#################'
     @music_albums.each_with_index do |music_album, index|
-      name = "#{index + 1}) Album Name: #{music_album["name"]}"
-      publish_date = " | publish date: #{music_album["publish_date"]}"
-      on_spotify = " | On Spotify: #{music_album["on_spotify"] ? 'Yes' : 'No'}"
+      name = "#{index + 1}) Album Name: #{music_album['name']}"
+      publish_date = " | publish date: #{music_album['publish_date']}"
+      on_spotify = " | On Spotify: #{music_album['on_spotify'] ? 'Yes' : 'No'}"
       current_genre = @genres[index]
       genre = " | Genre: #{current_genre['name']}"
       album_info = name + publish_date + on_spotify + genre
@@ -79,7 +79,7 @@ class App
   def list_all_genres
     puts 'You have selected 5 - List all genres'
     @genres.each_with_index do |genre, index|
-      puts "#{index + 1}. #{genre["name"]}"
+      puts "#{index + 1}. #{genre['name']}"
     end
   end
 
