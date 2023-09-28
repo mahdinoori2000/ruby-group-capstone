@@ -72,6 +72,7 @@ class App
 
   def list_all_movies
     puts 'You have selected 3 - List all movies'
+    list_all_movies_method
   end
 
   def list_all_games
@@ -94,6 +95,7 @@ class App
 
   def list_all_sources
     puts 'You have selected 8 - List all sources'
+    list_all_sources_method
   end
 
   def create_book
@@ -138,6 +140,30 @@ class App
 
     puts "Movie '#{title}' created successfully"
   end
+
+  # list all movies method
+  def list_all_movies_method
+    @movies.each_with_index do |movie, index|
+      print "#{index + 1}] "
+      puts "#{author ['first_name']} #{author['last_name']}"
+      puts '.............................'
+    end
+
+    # list all authors method
+    def list_all_authors_method
+      @authors.each_with_index do |author, index|
+        print "#{index + 1}] "
+        puts "#{author['first_name']} #{author['last_name']}"
+        puts '.....................'
+      end
+    end
+
+    # list all sources method
+    def list_all_sources_method
+      @sources.each_with_index do |source, index|
+        print "#{index + 1}] "
+        puts "Id: #{source['id']} | Name: #{source['name']}"
+        puts '......................'
 
   # Helper methods
   def get_user_input(prompt)
