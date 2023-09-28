@@ -1,3 +1,9 @@
+require_relative 'app-management/ui_class'
+require_relative 'app-management/books_modules'
+require_relative 'app-management/save_data'
+require_relative 'classes/author_class'
+require_relative 'classes/label_class'
+
 class App
   def initialize
     @ui = UI.new
