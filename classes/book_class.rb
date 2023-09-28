@@ -2,7 +2,6 @@ require_relative './author_class'
 require_relative './label_class'
 require_relative '../item'
 
-
 # this is a class that inherits from Item class
 class Book < Item
   attr_accessor :publisher, :cover_state
