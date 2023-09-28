@@ -1,7 +1,4 @@
-require_relative './save_data'
 require_relative '../classes/book_class'
-require_relative '../classes/author_class'
-require_relative '../classes/label_class'
 
 def create_book_method(books, authors, labels)
   @books = books
