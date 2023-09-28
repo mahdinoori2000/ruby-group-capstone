@@ -3,7 +3,6 @@ require_relative 'classes/music_album'
 require_relative 'classes/genre'
 require_relative 'app-management/save_data'
 
-
 class App
   def initialize
     @ui = UI.new
