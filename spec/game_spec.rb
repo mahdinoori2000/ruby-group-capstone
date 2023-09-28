@@ -6,7 +6,7 @@ describe Game do
     it 'takes three parameters and returns a Game object' do
       last_played_date = (Date.today - (2 * 365))
       game = Game.new('Andrea', last_played_date)
-      game.should be_an_instance_of Game
+      expect(game).to be_an_instance_of Game
     end
   end
   describe '#can_be_archived?' do
