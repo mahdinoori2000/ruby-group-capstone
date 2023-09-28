@@ -93,7 +93,7 @@ class App
     # Create book object
     @books << Book.new(publisher, publish_date, cover_state)
     print @books
-      save_file(@books, './data/books.json')
+    save_file(@books, './data/books.json')
     puts "Book '#{publisher}' created successfully!"
   end
 
