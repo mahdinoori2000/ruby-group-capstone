@@ -16,9 +16,7 @@ describe Source do
 
   it 'can add an item' do
     allow(@item).to receive(:source).and_return(@source)
-
     @source.add_item(@item)
-
     expect(@source.items).to include(@item)
   end
 
