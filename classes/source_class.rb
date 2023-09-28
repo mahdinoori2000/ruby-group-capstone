@@ -13,7 +13,10 @@ class Source
     item.add_source(self) unless item.source == self
   end
 
-  def to_s
-    "Source: #{@name} (ID: #{@id})"
+  def to_h
+    {
+      id: @id,
+      name: @name
+    }
   end
 end

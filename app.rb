@@ -1,13 +1,18 @@
 require_relative 'app-management/ui_class'
+require_relative 'app-management/save_data'
 require_relative 'classes/music_album'
 require_relative 'classes/genre'
+require_relative 'classes/movie_class'
+require_relative 'classes/source_class'
 
 class App
   def initialize
     @ui = UI.new
-    @music_albums = []
-    @genres = []
-    @movie = []
+    # @music_albums = []
+    # @genres = []
+    @movies = read_file('./data/movies.json')
+    @authors = read_file('./data/authors.json')
+    @sources = read_file('./data/sources.json')
   end
 
   def run
@@ -121,26 +126,18 @@ class App
     source_name = get_user_input('Enter source name: ')
     label = get_user_input('Enter label: ')
     publish_date = Date.parse(get_user_input('Enter publish date (YYYY-MM-DD): '))
-  
-    movie = Movie.new(1,
-                      title,
-                      silet: silet,
-                      genre: genre,
-                      author: "#{author_first_name} #{author_last_name}",
-                      source: source_name,
-                      label: label,
-                      publish_date: publish_date)
-  
-    # Add the movie, author, and source to their respective collections
-    @movies.push(movie) # You need to have an instance variable @movies defined in your App class.
-    author = Author.new(author_first_name, author_last_name)
-    source = Source.new(source_id, source_name)
-    author.add_item(movie)
-    source.add_item(movie)
-  
-    puts "Movie '#{title}' created successfully!"
+
+    @movies << Movie.new(title,silet, genre, label, publish_date)
+    @authors << Author.new(author_first_name, author_last_name)
+    @sources << Source.new(source_id,source_name)
+
+    print @movies
+    save_file(@movies, './data/movies.json')
+    save_file(@authors, './data/authors.json')
+    save_file(@sources, './data/sources.json')
+
+    puts "Movie '#{title}' created successfully"
   end
-  
 
   # Helper methods
   def get_user_input(prompt)

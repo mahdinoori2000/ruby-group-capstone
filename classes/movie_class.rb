@@ -1,16 +1,17 @@
 require_relative '../item'
+require_relative './author_class'
+require_relative './source_class'
 
 class Movie < Item
-  attr_accessor :silet, :genre, :author, :source, :label
+  attr_accessor :title, :silet, :genre, :label
 
-  def initialize(title, silet, genre, author, source, label, publish_date, options = {})
-    super(publish_date: options.fetch(:publish_date, Date.today), archived: options.fetch(:archived, false))
+  def initialize(title, silet, genre, label, publish_date)
+    super(publish_date: publish_date)
     @title = title
     @silet = silet
     @genre = genre
-    @author = author
-    @source = source
     @label = label
+    @publish_date = publish_date
   end
 
   def can_be_archived?
@@ -23,9 +24,14 @@ class Movie < Item
     @archived = true
   end
 
-  def to_s
-    "Movie: #{@title} (Silent: #{@silet}, Genre: #{@genre}, " \
-      "Author: #{@author}, Source: #{@source}, Label: #{@label}, " \
-      "Archived: #{@archived})"
+  def to_h
+    {
+      id: @id,
+      title: @title,
+      silet: @silet,
+      genre: @genre,
+      publish_date: @publish_date,
+      label: @label
+    }
   end
 end
