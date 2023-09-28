@@ -8,6 +8,9 @@ class App
     @ui = UI.new
     @music_albums = read_file('./data-files/music_albums.json')
     @genres = read_file('./data-files/genres.json')
+    @books = read_file('./data-files/books.json')
+    @authors = read_file('./data-files/authors.json')
+    @labels = read_file('./data-files/labels.json')
   end
 
   def run
