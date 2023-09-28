@@ -3,7 +3,7 @@ require 'date'
 class Item
   attr_reader :id, :genre, :author, :source, :label, :publish_date
 
-  def initialize(label, author, publish_date, archived: false)
+  def initialize(label, genre, source, author, publish_date, archived: false)
     @id = id || Random.rand(1...100)
     @label = label
     @author = author
@@ -19,7 +19,7 @@ class Item
     @author = author
     author.add_item(self) # Add the item to the author's list of items
   end
-
+  
   def add_source=(source)
     @source = source
   end
