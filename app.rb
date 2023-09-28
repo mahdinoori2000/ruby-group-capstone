@@ -1,8 +1,8 @@
-require_relative 'app-management/ui_class'
-require_relative 'app-management/save_data'
-require_relative 'classes/book_class'
-require_relative 'classes/author_class'
-require_relative 'classes/label_class'
+require_relative './app-management/ui_class'
+require_relative './app-management/books_modules'
+require_relative './app-management/save_data'
+require_relative './classes/author_class'
+require_relative './classes/label_class'
 
 class App
   def initialize
@@ -51,7 +51,7 @@ class App
 
   def list_all_books
     puts 'You have selected 1 - List all books'
-    list_all_books_method
+    list_all_books_method(@books, @authors, @labels)
   end
 
   def list_all_music_albums
@@ -86,46 +86,11 @@ class App
 
   def create_book
     puts 'You have selected 9 - Create a book'
-    create_book_method
+    create_book_method(@books, @authors, @labels)
   end
 
   def create_music_album
     puts 'You have selected 10 - Create a music album'
-  end
-
-  def create_book_method
-    publish_date = get_user_input('Enter publish date (YYYY-MM-DD): ')
-    publisher = get_user_input('Enter author publisher name: ')
-    cover_state = get_user_input('Enter cover state(Good OR Bad): ')
-    author_first_name = get_user_input('Enter author first name: ')
-    author_last_name = get_user_input('Enter author last name: ')
-    label_title = get_user_input('Enter label title: ')
-    label_color = get_user_input('Enter label color: ')
-    # Create book object
-    @books << Book.new(publisher, publish_date, cover_state)
-    @authors << Author.new(author_first_name, author_last_name)
-    @labels << Label.new(label_title, label_color)
-
-    print @books
-    save_file(@books, './data/books.json')
-    save_file(@authors, './data/authors.json')
-    save_file(@labels, './data/labels.json')
-    puts "Book '#{publisher}' created successfully!"
-  end
-
-  def list_all_books_method
-    @books.each_with_index do |book, index|
-      puts "Book ID: #{book['id']}"
-      label = @labels[index]
-      author = @authors[index]
-      puts "Book Name: #{label['title']}"
-      puts "Book Color: #{label['color']}"
-      puts "Author Fullname: #{author['first_name']} #{author['last_name']}"
-      puts "Publish Date: #{book['publish_date']}"
-      puts "Publisher: #{book['publisher']}"
-      puts "Cover State: #{book['cover_state']}"
-      puts '----------------------'
-    end
   end
 
   def create_movie
@@ -144,9 +109,7 @@ class App
     movie = create_movie_object(title, silet, genre, label, publish_date)
     author = create_author_object(author_first_name, author_last_name)
     source = create_source_object(source_id, source_name)
-
     associate_objects(movie, author, source)
-
     puts "Movie '#{title}' created successfully!"
   end
 
