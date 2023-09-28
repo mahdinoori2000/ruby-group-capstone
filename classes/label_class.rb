@@ -18,4 +18,12 @@ class Label
   def generate_id
     rand(1..1000)
   end
+
+  def to_h
+    {
+      id: @id,
+      title: @title,
+      color: @color
+    }
+  end
 end
