@@ -72,10 +72,12 @@ class App
 
   def list_all_labels
     puts 'You have selected 6 - List all labels'
+    list_all_labels_method
   end
 
   def list_all_authors
     puts 'You have selected 7 - List all authors'
+    list_all_authors_method
   end
 
   def list_all_sources
@@ -146,6 +148,24 @@ class App
     associate_objects(movie, author, source)
 
     puts "Movie '#{title}' created successfully!"
+  end
+
+  # list all authors method
+  def list_all_authors_method
+    @authors.each_with_index do |author, index|
+      print "#{index + 1}] "
+      puts "#{author['first_name']} #{author['last_name']}"
+      puts '.....................'
+    end
+  end
+
+  # list all labels method
+  def list_all_labels_method
+    @labels.each_with_index do |label, index|
+      print "#{index + 1}] "
+      puts "Title: #{label['title']} | Color: #{label['color']}"
+      puts '.....................'
+    end
   end
 
   # Helper methods
