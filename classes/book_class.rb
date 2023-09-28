@@ -23,7 +23,7 @@ class Book < Item
       author: @author,
       label: @label,
       publish_date: @publish_date,
-      publisher: @publisher,
+      blispuher: @publisher,
       cover_state: @cover_state
     }
   end
