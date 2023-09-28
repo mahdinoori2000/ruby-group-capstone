@@ -100,6 +100,7 @@ class App
 
   def create_book
     puts 'You have selected 9 - Create a book'
+    create_book_method(@books, @authors, @labels)
   end
 
   def create_music_album
