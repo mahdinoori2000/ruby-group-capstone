@@ -7,6 +7,7 @@ class App
     @ui = UI.new
     @music_albums = []
     @genres = []
+    @movie = []
   end
 
   def run
@@ -120,16 +121,26 @@ class App
     source_name = get_user_input('Enter source name: ')
     label = get_user_input('Enter label: ')
     publish_date = Date.parse(get_user_input('Enter publish date (YYYY-MM-DD): '))
-
-    # Create movie, author, and source objects
-    movie = create_movie_object(title, silet, genre, label, publish_date)
-    author = create_author_object(author_first_name, author_last_name)
-    source = create_source_object(source_id, source_name)
-
-    associate_objects(movie, author, source)
-
+  
+    movie = Movie.new(1,
+                      title,
+                      silet: silet,
+                      genre: genre,
+                      author: "#{author_first_name} #{author_last_name}",
+                      source: source_name,
+                      label: label,
+                      publish_date: publish_date)
+  
+    # Add the movie, author, and source to their respective collections
+    @movies.push(movie) # You need to have an instance variable @movies defined in your App class.
+    author = Author.new(author_first_name, author_last_name)
+    source = Source.new(source_id, source_name)
+    author.add_item(movie)
+    source.add_item(movie)
+  
     puts "Movie '#{title}' created successfully!"
   end
+  
 
   # Helper methods
   def get_user_input(prompt)
