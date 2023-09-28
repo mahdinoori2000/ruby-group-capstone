@@ -18,6 +18,14 @@ class Label
   def generate_id
     rand(1..1000)
   end
+
+  def to_h
+    {
+      id: @id,
+      title: @title,
+      color: @color
+    }
+  end
 end
 # new_item = Item.new('2020-03-02')
 # new_label = Label.new('title', 'color')
