@@ -53,6 +53,7 @@ class App
 
   def list_all_books
     puts 'You have selected 1 - List all books'
+    list_all_books_method(@books, @authors, @labels)
   end
 
   def list_all_music_albums
@@ -123,23 +124,23 @@ class App
   end
 
   def create_movie
-    puts 'You have selected 11 - Create a movie'
-    title = get_user_input('Enter movie title: ')
-    silet = get_user_input('Is it silent? (true/false): ').downcase == 'true'
-    genre = get_user_input('Enter movie genre: ')
-    author_first_name = get_user_input('Enter author first name: ')
-    author_last_name = get_user_input('Enter author last name: ')
-    source_id = get_user_input('Enter source ID: ').to_i
-    source_name = get_user_input('Enter source name: ')
-    label = get_user_input('Enter label: ')
-    publish_date = Date.parse(get_user_input('Enter publish date (YYYY-MM-DD): '))
+    # puts 'You have selected 11 - Create a movie'
+    # title = get_user_input('Enter movie title: ')
+    # silet = get_user_input('Is it silent? (true/false): ').downcase == 'true'
+    # genre = get_user_input('Enter movie genre: ')
+    # author_first_name = get_user_input('Enter author first name: ')
+    # author_last_name = get_user_input('Enter author last name: ')
+    # source_id = get_user_input('Enter source ID: ').to_i
+    # source_name = get_user_input('Enter source name: ')
+    # label = get_user_input('Enter label: ')
+    # publish_date = Date.parse(get_user_input('Enter publish date (YYYY-MM-DD): '))
 
-    # Create movie, author, and source objects
-    movie = create_movie_object(title, silet, genre, label, publish_date)
-    author = create_author_object(author_first_name, author_last_name)
-    source = create_source_object(source_id, source_name)
+    # # Create movie, author, and source objects
+    # movie = create_movie_object(title, silet, genre, label, publish_date)
+    # author = create_author_object(author_first_name, author_last_name)
+    # source = create_source_object(source_id, source_name)
 
-    associate_objects(movie, author, source)
+    # associate_objects(movie, author, source)
 
     puts "Movie '#{title}' created successfully!"
   end
@@ -150,14 +151,14 @@ class App
     gets.chomp
   end
 
-  def create_movie_object(title, silet, genre, label, publish_date)
-    Movie.new(1, title, silet: silet, genre: genre, label: label, publish_date: publish_date)
-  end
+  # def create_movie_object(title, silet, genre, label, publish_date)
+  #   Movie.new(1, title, silet: silet, genre: genre, label: label, publish_date: publish_date)
+  # end
 
-  def create_author_object(first_name, last_name)
-    Author.new(first_name, last_name)
-  end
-
+  # def create_author_object(first_name, last_name)
+  #   Author.new(first_name, last_name)
+  # end
+  
   def create_source_object(id, name)
     Source.new(id, name)
   end
