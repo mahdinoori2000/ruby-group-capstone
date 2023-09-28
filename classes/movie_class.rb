@@ -3,8 +3,8 @@ require_relative '../item'
 class Movie < Item
   attr_accessor :silet, :genre, :author, :source, :label
 
-  def initialize(id, title, silet:, genre:, author:, source:, label:, publish_date:, options = {})
-    super(id, publish_date: publish_date, archived: options.fetch(:archived, false))
+  def initialize(title, silet, genre, author, source, label, publish_date, options = {})
+    super(publish_date: options.fetch(:publish_date, Date.today), archived: options.fetch(:archived, false))
     @title = title
     @silet = silet
     @genre = genre
