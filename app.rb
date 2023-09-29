@@ -6,6 +6,8 @@ require_relative 'classes/movie_class'
 require_relative 'classes/source_class'
 require_relative 'app-management/create_books'
 require_relative 'movies/movie_method'
+require_relative 'app-management/create_game'
+require_relative 'app-management/list_game_author'
 
 class App
   def initialize
@@ -31,7 +33,6 @@ class App
     exit_app
   end
 
-  # To be completed later on ↓
   def apply_option(option)
     actions = {
       1 => method(:list_all_books),
@@ -84,6 +85,8 @@ class App
 
   def list_all_games
     puts 'You have selected 4 - List all games'
+    list_all_games = ListData.new
+    list_all_games.list_games
   end
 
   def list_all_genres
@@ -100,7 +103,8 @@ class App
 
   def list_all_authors
     puts 'You have selected 7 - List all authors'
-    list_all_authors_method(@authors)
+    list_all_authors = ListData.new
+    list_all_authors.list_authors
   end
 
   def list_all_sources
@@ -169,6 +173,8 @@ class App
 
   def create_game
     puts 'You have selected 12 - Create a game'
+    new_game = CreateGame.new
+    new_game.create_game
   end
 
   def exit_app

@@ -32,10 +32,8 @@ class ListData
       puts '🖌️  LIST OF AUTHORS'
       puts '-------------------'
       authors.each_with_index do |author, index|
-        items_list = author['items'].join(', ')
-        puts "#{index + 1} - Name: #{author['author_name']}, " \
-             "Last Name: #{author['author_last_name']}, " \
-             "Items: #{items_list}."
+        puts "#{index + 1} - Name: #{author['first_name']}, " \
+             "Last Name: #{author['last_name']}, " \
       end
       puts '---------------------------------------------'
 
