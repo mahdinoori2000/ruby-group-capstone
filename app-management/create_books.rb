@@ -22,7 +22,11 @@ def create_book_method(books, authors, labels)
   save_file(@books, './data-files/books.json')
   save_file(@authors, './data-files/authors.json')
   save_file(@labels, './data-files/labels.json')
-  puts "Book '#{publisher}' created successfully!"
+  @books = read_file('./data-files/books.json')
+  @authors = read_file('./data-files/authors.json')
+  @labels = read_file('./data-files/labels.json')
+  puts '--------------------------------'
+  puts "Book '#{label_title}' created successfully!"
 end
 
 def list_all_books_method(books, authors, labels)
