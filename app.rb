@@ -4,14 +4,13 @@ require_relative 'classes/music_album'
 require_relative 'classes/genre'
 require_relative 'classes/movie_class'
 require_relative 'classes/source_class'
-require_relative 'app-management/save_data'
 require_relative 'app-management/create_books'
 
 class App
   def initialize
     @ui = UI.new
-    @movies = read_file('./data/movies.json')
-    @sources = read_file('./data/sources.json')
+    @movies = read_file('./data-files/movies.json')
+    @sources = read_file('./data-files/sources.json')
     @music_albums = read_file('./data-files/music_albums.json')
     @genres = read_file('./data-files/genres.json')
     @books = read_file('./data-files/books.json')
@@ -150,11 +149,11 @@ class App
     @sources << Source.new(source_name)
 
     print @movies
-    save_file(@movies, './data/movies.json')
-    save_file(@authors, './data/authors.json')
-    save_file(@sources, './data/sources.json')
-    @sources = read_file('./data/sources.json')
-    @movies = read_file('./data/movies.json')
+    save_file(@movies, './data-files/movies.json')
+    save_file(@authors, './data-files/authors.json')
+    save_file(@sources, './data-files/sources.json')
+    @sources = read_file('./data-files/sources.json')
+    @movies = read_file('./data-files/movies.json')
 
     puts "Movie '#{title}' created successfully"
   end
