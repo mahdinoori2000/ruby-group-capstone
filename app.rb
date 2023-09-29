@@ -80,7 +80,7 @@ class App
 
   def list_all_games
     puts 'You have selected 4 - List all games'
-    list_all_games = ListData.new()
+    list_all_games = ListData.new
     list_all_games.list_games
   end
 
@@ -98,7 +98,7 @@ class App
 
   def list_all_authors
     puts 'You have selected 7 - List all authors'
-     list_all_authors = ListData.new()
+    list_all_authors = ListData.new
     list_all_authors.list_authors
   end
 
@@ -181,7 +181,7 @@ class App
 
   def create_game
     puts 'You have selected 12 - Create a game'
-    new_game = CreateGame.new()
+    new_game = CreateGame.new
     new_game.create_game
   end
 
