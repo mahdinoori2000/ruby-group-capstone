@@ -15,3 +15,9 @@ CREATE TABLE music_albums (
   on_spotify BOOLEAN,
   archived BOOLEAN,
 );
+
+-- Create music albums table
+CREATE TABLE genre (
+  id INT PRIMARY KEY,
+  name VARCHAR(100),
+)
