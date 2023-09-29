@@ -59,6 +59,18 @@ and after run,
 bundle install
 ```
 
+### Run the app 
+for running the app, run below command
+```
+ruby main.rb
+```
+
+### Run the tests 
+for running the tests, run below command
+```
+rspec
+```
+
 ## :busts_in_silhouette: Authors <a name="authors"></a>
 :bust_in_silhouette: *Mahdi Noori*
 - GitHub: [@mahdinoori](https://github.com/mahdinoori2000)
