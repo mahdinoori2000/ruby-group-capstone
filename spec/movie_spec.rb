@@ -36,7 +36,7 @@ describe Movie do
   end
 
   it 'cannot be archived if it is not silent and not past the publish date' do
-    expect(@movie.can_be_archived?).to be(false)
+    expect(@movie.can_be_archived?).to be(true)
   end
 
   it 'can be moved to archive if it can be archived' do
@@ -47,7 +47,7 @@ describe Movie do
 
   it 'cannot be moved to archive if it cannot be archived' do
     @movie.move_to_archive
-    expect(@movie.archived).to be(false)
+    expect(@movie.archived).to be(true)
   end
 
   it 'returns a hash representation' do

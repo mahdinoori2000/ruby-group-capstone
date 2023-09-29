@@ -103,9 +103,9 @@ class App
   end
 
   def create_music_album
-    puts '##############################'
+    puts '-------------------'
     puts '# Enter music album details: #'
-    puts '##############################'
+    puts '-------------------'
     name = get_user_input('Enter album title: ')
     publish_date = get_user_input('Enter date of release (YYYY-MM-DD): ')
     on_spotify = get_user_input('Is it on Spotify? (Y/N): ').downcase == 'y'
@@ -124,37 +124,37 @@ class App
     genre = get_user_input('Enter movie genre: ')
     author_first_name = get_user_input('Enter author first name: ')
     author_last_name = get_user_input('Enter author last name: ')
-    source_id = get_user_input('Enter source ID: ').to_i
     source_name = get_user_input('Enter source name: ')
     label = get_user_input('Enter label: ')
     publish_date = Date.parse(get_user_input('Enter publish date (YYYY-MM-DD): '))
 
     @movies << Movie.new(title, silet, genre, label, publish_date)
     @authors << Author.new(author_first_name, author_last_name)
-    @sources << Source.new(source_id, source_name)
+    @sources << Source.new(source_name)
 
     print @movies
     save_file(@movies, './data/movies.json')
     save_file(@authors, './data/authors.json')
     save_file(@sources, './data/sources.json')
+    @sources = read_file('./data/sources.json')
+    @movies = read_file('./data/movies.json')
 
     puts "Movie '#{title}' created successfully"
   end
 
   # list all movies method
   def list_all_movies_method
-    @movies.each_with_index do |_movie, index|
-      print "#{index + 1}] "
-      puts "#{author ['first_name']} #{author['last_name']}"
-      puts '.............................'
+    @movies.each do |movie|
+      puts "Title: #{movie['title']}, Silent: #{movie['silet']}, Genre: #{movie['genre']}, ..."
+      puts '------------------------------'
     end
   end
 
   # list all sources method
   def list_all_sources_method
     @sources.each do |source|
-      puts "Source ID: #{source.id}, Source Name: #{source.name}"
-      puts '......................'
+      puts "Source ID: #{source['id']}, Source Name: #{source['name']}"
+      puts '------------------------------'
     end
   end
 
