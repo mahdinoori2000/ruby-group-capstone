@@ -28,7 +28,6 @@ class App
     exit_app
   end
 
-  # To be completed later on ↓
   def apply_option(option)
     actions = {
       1 => method(:list_all_books),
@@ -148,9 +147,7 @@ class App
     movie = create_movie_object(title, silet, genre, label, publish_date)
     author = create_author_object(author_first_name, author_last_name)
     source = create_source_object(source_id, source_name)
-
     associate_objects(movie, author, source)
-
     puts "Movie '#{title}' created successfully!"
   end
 
