@@ -1,14 +1,19 @@
 require_relative 'app-management/ui_class'
+require_relative 'app-management/save_data'
 require_relative 'classes/music_album'
 require_relative 'classes/genre'
-require_relative 'app-management/save_data'
+require_relative 'classes/movie_class'
+require_relative 'classes/source_class'
 require_relative 'app-management/create_books'
+require_relative 'movies/movie_method'
 require_relative 'app-management/create_game'
 require_relative 'app-management/list_game_author'
 
 class App
   def initialize
     @ui = UI.new
+    @movies = read_file('./data-files/movies.json')
+    @sources = read_file('./data-files/sources.json')
     @music_albums = read_file('./data-files/music_albums.json')
     @genres = read_file('./data-files/genres.json')
     @books = read_file('./data-files/books.json')
@@ -75,6 +80,7 @@ class App
 
   def list_all_movies
     puts 'You have selected 3 - List all movies'
+    list_all_movies_method
   end
 
   def list_all_games
@@ -103,6 +109,7 @@ class App
 
   def list_all_sources
     puts 'You have selected 8 - List all sources'
+    list_all_sources_method
   end
 
   def create_book
@@ -114,7 +121,7 @@ class App
     puts 'You have selected 10 - Create a music album'
     puts '##############################'
     puts '# Enter music album details: #'
-    puts '##############################'
+    puts '-------------------'
     name = get_user_input('Enter album title: ')
     publish_date = get_user_input('Enter date of release (YYYY-MM-DD): ')
     on_spotify = get_user_input('Is it on Spotify? (Y/N): ').downcase == 'y'
@@ -131,24 +138,12 @@ class App
     @genres = read_file('./data-files/genres.json')
   end
 
-  def create_movie
-    puts 'You have selected 11 - Create a movie'
-    title = get_user_input('Enter movie title: ')
-    silet = get_user_input('Is it silent? (true/false): ').downcase == 'true'
-    genre = get_user_input('Enter movie genre: ')
-    author_first_name = get_user_input('Enter author first name: ')
-    author_last_name = get_user_input('Enter author last name: ')
-    source_id = get_user_input('Enter source ID: ').to_i
-    source_name = get_user_input('Enter source name: ')
-    label = get_user_input('Enter label: ')
-    publish_date = Date.parse(get_user_input('Enter publish date (YYYY-MM-DD): '))
-
-    # Create movie, author, and source objects
-    movie = create_movie_object(title, silet, genre, label, publish_date)
-    author = create_author_object(author_first_name, author_last_name)
-    source = create_source_object(source_id, source_name)
-    associate_objects(movie, author, source)
-    puts "Movie '#{title}' created successfully!"
+  # list all sources method
+  def list_all_sources_method
+    @sources.each do |source|
+      puts "Source ID: #{source['id']}, Source Name: #{source['name']}"
+      puts '------------------------------'
+    end
   end
 
   # Helper methods

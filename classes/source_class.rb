@@ -2,8 +2,8 @@ class Source
   attr_reader :id, :name
   attr_accessor :items
 
-  def initialize(id, name)
-    @id = id
+  def initialize(name)
+    @id = Random.rand(1...100)
     @name = name
     @items = []
   end
@@ -13,7 +13,10 @@ class Source
     item.add_source(self) unless item.source == self
   end
 
-  def to_s
-    "Source: #{@name} (ID: #{@id})"
+  def to_h
+    {
+      id: @id,
+      name: @name
+    }
   end
 end
