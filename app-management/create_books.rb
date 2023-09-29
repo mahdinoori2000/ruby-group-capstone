@@ -6,7 +6,6 @@ def create_book_method(books, authors, labels)
   @books = books
   @authors = authors
   @labels = labels
-
   publish_date = get_user_input('Enter publish date (YYYY-MM-DD): ')
   publisher = get_user_input('Enter author publisher name: ')
   cover_state = get_user_input('Enter cover state(Good OR Bad): ')
@@ -14,18 +13,15 @@ def create_book_method(books, authors, labels)
   author_last_name = get_user_input('Enter author last name: ')
   label_title = get_user_input('Enter label title: ')
   label_color = get_user_input('Enter label color: ')
-  # Create book object
   @books << Book.new(publisher, publish_date, cover_state)
   @authors << Author.new(author_first_name, author_last_name)
   @labels << Label.new(label_title, label_color)
-  print @books
   save_file(@books, './data-files/books.json')
   save_file(@authors, './data-files/authors.json')
   save_file(@labels, './data-files/labels.json')
   @books = read_file('./data-files/books.json')
   @authors = read_file('./data-files/authors.json')
   @labels = read_file('./data-files/labels.json')
-  puts '--------------------------------'
   puts "Book '#{label_title}' created successfully!"
 end
 
