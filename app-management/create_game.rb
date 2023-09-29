@@ -45,17 +45,11 @@ class CreateGame
   def create_author_data
     author_name = input_value('Author Name')
     author_last_name = input_value('Author Last Name')
-    number_items = input_value('How many items has?').to_i
-    items = []
-    number_items.times do |i|
-      item_name = input_value("Enter item ##{i + 1} name")
-      items << item_name
-    end
 
     new_author = {
-      author_name: author_name,
-      author_last_name: author_last_name,
-      items: items
+      id: Random.rand(1..1000),
+      first_name: author_name,
+      last_name: author_last_name
     }
     @authors.push(new_author)
   end
