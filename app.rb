@@ -123,6 +123,8 @@ class App
     puts 'You have selected 10 - Create a music album'
     save_file(@music_albums, './data-files/music_albums.json')
     save_file(@genres, './data-files/genres.json')
+    @music_albums = read_file('./data-files/music_albums.json')
+    @genres = read_file('./data-files/genres.json')
   end
 
   def create_movie
