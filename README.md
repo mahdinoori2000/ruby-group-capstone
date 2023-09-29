@@ -16,7 +16,9 @@
 - [📝 License](#license)
 
    # :book: Ruby-group-capstone<a name="about-project"></a>
-  In this project, we created a console app that will help us to keep a record of different types of things we own: books, music albums, movies, and games.
+  In this project, we created a console app that will help us to keep a record of different types of things we own: books, music albums, movies, and games. Everything is based on the UML class diagram presented below. The data is preserved in JSON files. However we have also prepared a database with tables structure analogical to program's class structure.
+
+  <img src="diagram.png">
 ## :hammer_and_wrench: Built With <a name="built-with"></a>
 ### Tech Stack <a name="tech-stack"></a>
 
@@ -28,6 +30,9 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+### Video Presentation
+<a href="https://drive.google.com/file/d/1U0FiF5JA6D-Zp3KiUL-DHZBlc9EDI3bb/view?usp=sharing">Check out video presentation</a>
 
 ## :computer: Getting Started <a name="getting-started"></a>
 To get a local copy up and running, follow these steps.
