@@ -5,19 +5,19 @@ CREATE DATABASE catalog;
 CREATE TABLE item (
   id INT PRIMARY KEY,
   publish_date DATE,
-  archived BOOLEAN,
+  archived BOOLEAN
 );
 
 -- Create music albums table
 CREATE TABLE music_albums (
   id INT PRIMARY KEY,
-  publish_date DATE NOT NULL DEFAULT DATE,
+  publish_date DATE NOT NULL,
   on_spotify BOOLEAN,
-  archived BOOLEAN,
+  archived BOOLEAN
 );
 
 -- Create music albums table
 CREATE TABLE genre (
   id INT PRIMARY KEY,
-  name VARCHAR(100),
-)
+  name VARCHAR(100)
+);
