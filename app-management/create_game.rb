@@ -49,7 +49,7 @@ class CreateGame
     new_author = {
       id: Random.rand(1..1000),
       first_name: author_name,
-      last_name: author_last_name,
+      last_name: author_last_name
     }
     @authors.push(new_author)
   end
