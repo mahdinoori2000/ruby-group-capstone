@@ -2,12 +2,16 @@ require_relative 'app-management/ui_class'
 require_relative 'classes/music_album'
 require_relative 'classes/genre'
 require_relative 'app-management/save_data'
+require_relative 'app-management/create_books'
 
 class App
   def initialize
     @ui = UI.new
     @music_albums = read_file('./data-files/music_albums.json')
     @genres = read_file('./data-files/genres.json')
+    @books = read_file('./data-files/books.json')
+    @authors = read_file('./data-files/authors.json')
+    @labels = read_file('./data-files/labels.json')
   end
 
   def run
@@ -49,6 +53,7 @@ class App
 
   def list_all_books
     puts 'You have selected 1 - List all books'
+    list_all_books_method(@books, @authors, @labels)
   end
 
   def list_all_music_albums
@@ -84,10 +89,12 @@ class App
 
   def list_all_labels
     puts 'You have selected 6 - List all labels'
+    list_all_labels_method(@labels)
   end
 
   def list_all_authors
     puts 'You have selected 7 - List all authors'
+    list_all_authors_method(@authors)
   end
 
   def list_all_sources
@@ -96,6 +103,7 @@ class App
 
   def create_book
     puts 'You have selected 9 - Create a book'
+    create_book_method(@books, @authors, @labels)
   end
 
   def create_music_album
