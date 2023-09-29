@@ -1,6 +1,6 @@
 require_relative '../item'
-require_relative './author_class'
-require_relative './source_class'
+require_relative 'author_class'
+require_relative 'source_class'
 
 class Movie < Item
   attr_accessor :title, :silet, :genre, :label, :archived
@@ -20,6 +20,7 @@ class Movie < Item
 
   def move_to_archive
     return unless can_be_archived?
+
     @archived = true
   end
 

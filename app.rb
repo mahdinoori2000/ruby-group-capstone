@@ -129,9 +129,9 @@ class App
     label = get_user_input('Enter label: ')
     publish_date = Date.parse(get_user_input('Enter publish date (YYYY-MM-DD): '))
 
-    @movies << Movie.new(title,silet, genre, label, publish_date)
+    @movies << Movie.new(title, silet, genre, label, publish_date)
     @authors << Author.new(author_first_name, author_last_name)
-    @sources << Source.new(source_id,source_name)
+    @sources << Source.new(source_id, source_name)
 
     print @movies
     save_file(@movies, './data/movies.json')
@@ -143,27 +143,20 @@ class App
 
   # list all movies method
   def list_all_movies_method
-    @movies.each_with_index do |movie, index|
+    @movies.each_with_index do |_movie, index|
       print "#{index + 1}] "
       puts "#{author ['first_name']} #{author['last_name']}"
       puts '.............................'
     end
+  end
 
-    # list all authors method
-    def list_all_authors_method
-      @authors.each_with_index do |author, index|
-        print "#{index + 1}] "
-        puts "#{author['first_name']} #{author['last_name']}"
-        puts '.....................'
-      end
+  # list all sources method
+  def list_all_sources_method
+    @sources.each do |source|
+      puts "Source ID: #{source.id}, Source Name: #{source.name}"
+      puts '......................'
     end
-
-    # list all sources method
-    def list_all_sources_method
-      @sources.each_with_index do |source, index|
-        print "#{index + 1}] "
-        puts "Id: #{source['id']} | Name: #{source['name']}"
-        puts '......................'
+  end
 
   # Helper methods
   def get_user_input(prompt)
