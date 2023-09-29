@@ -13,7 +13,6 @@ describe MusicAlbum do
 
   describe '#can_be_archived?' do
     it 'should returns true if the album can be archived' do
-      # publish_date = Date.today.prev_year(11).strftime
       album = MusicAlbum.new('Irani', '1990-01-02', on_spotify: true)
 
       expect(album.can_be_archived?).to be true
